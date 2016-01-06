@@ -1,11 +1,10 @@
-" Use Vim settings not Vi, must be first
 set nocompatible
-
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " Appearance.vundles
 
@@ -40,6 +39,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-commentary'
 Plugin 'python-rope/ropevim'
+Plugin 'ntpeters/vim-better-whitespace'
 
 call vundle#end()
 
@@ -294,3 +294,13 @@ let g:lightline.component = {
     \ 'lineinfo': '%-2v' }
 
 map <Space> <PageDown>
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:symtastic_python_checkers = ['flake8']
