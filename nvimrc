@@ -16,11 +16,14 @@ Plugin 'myusuf3/numbers.vim'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-surround'
 
 " Languages.vundles
 
 Plugin 'scrooloose/syntastic'
 Plugin 'ivanov/vim-ipython'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 
 " Project.vundles
 
@@ -38,8 +41,10 @@ Plugin 'haya14busa/incsearch.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-commentary'
-Plugin 'python-rope/ropevim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'wookiehangover/jshint.vim'
 
 call vundle#end()
 
@@ -304,3 +309,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:symtastic_python_checkers = ['flake8']
+
+let g:jsx_ext_required = 0
+let g:syntastic_javascript_checkers = ['eslint']
+

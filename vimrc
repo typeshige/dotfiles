@@ -40,6 +40,7 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-commentary'
 Plugin 'python-rope/ropevim'
+Plugin 'sukima/xmledit'
 
 call vundle#end()
 
