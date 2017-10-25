@@ -1,56 +1,72 @@
 set nocompatible
+set autoread
 filetype off
 
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin()
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'VundleVim/Vundle.vim'
 
 " Appearance.vundles
 
-Plugin 'skwp/vim-colors-solarized'
-Plugin 'itchyny/lightline.vim'
-Plugin 'myusuf3/numbers.vim'
+Plug 'skwp/vim-colors-solarized'
+Plug 'itchyny/lightline.vim'
+Plug 'myusuf3/numbers.vim'
+Plug 'freeo/vim-kalisi'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'leshill/vim-json'
+Plug 'ajh17/Spacegray.vim'
+Plug 'ryanoasis/vim-devicons'
+
+
 
 " Git.vundles
 
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-surround'
+Plug 'gregsexton/gitv'
+
 
 " Languages.vundles
 
-Plugin 'scrooloose/syntastic'
-Plugin 'ivanov/vim-ipython'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'sbdchd/neoformat'
+
 
 " Project.vundles
 
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'ervandew/supertab'
+Plug 'Shougo/neocomplete.vim'
+
 
 " Vim-improvement.vundles
 
-Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'jlanzarotta/bufexplorer'
-" Plugin 'sjbach/lusty'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-commentary'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'vim-scripts/closetag.vim'
-Plugin 'wookiehangover/jshint.vim'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-commentary'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'davidhalter/jedi-vim'
+Plug 'vim-scripts/closetag.vim'
+Plug 'google/yapf'
+Plug 'Shougo/deoplete.nvim'
+Plug 'python-mode/python-mode', {'branch': 'develop'}
+Plug 'editorconfig/editorconfig-vim'
 
-call vundle#end()
 
-filetype on
-filetype plugin on
-filetype indent on
+call plug#end()
+
+filetype plugin indent on
 
 " General
 set number                          " show line number
@@ -67,6 +83,7 @@ set hidden
 syntax on 
 
 let mapleader = ','
+let maplocalleader = "\\"
 
 " Search Settings
 set hlsearch
@@ -119,7 +136,6 @@ set textwidth=80
 set encoding=utf-8
 scriptencoding utf-8
 
-set history=1000
 set spell
 
 set fileformats=unix,mac,dos
@@ -141,7 +157,12 @@ set mouse=a " use mouse everywhere
 
 "Vim UI
 set cursorcolumn " highlight the current column
+" autocmd InsertEnter * highlight CursorColumn ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+" autocmd InsertLeave * highlight CursorColumn ctermfg=Black ctermbg=Yellow cterm=bold guifg=Black guibg=yellow gui=NONE
 set cursorline " highlight the current line
+" autocmd InsertEnter * highlight CursorLine guibg=#000050 guifg=fg
+" autocmd InsertLeave * highlight CursorLine guibg=#004000 guifg=fg
+
 set nostartofline
 set list " show tabs
 
@@ -169,11 +190,51 @@ set guioptions-=T
 :noremap <Leader>j :RopeGotoDefinition<CR>
 
 map <Leader>b :LustyJuggler<CR>
-let g:pymode_breakpoint_key = '<leader>B'
-let g:pymode_folding = 0
+" let g:pymode_breakpoint_key = '<leader>B'
+" let g:pymode_folding = 0
 "let g:pymode_lint_ignore = "E501"
-let g:pymode_rope_goto_def_newwin = "new"
+" let g:pymode_rope_goto_def_newwin = "new"
+
+let pymode = 1
+let pymode_breakpoint = 1
+let pymode_breakpoint_bind = '<leader>b'
+let pymode_doc = 1
+let pymode_doc_bind = 'K'
+let pymode_folding = 1
+let pymode_indent = 1
+let pymode_lint = 1
+let pymode_lint_checkers = ['pyflakes', 'pep8', 'mccabe']
+let pymode_lint_cwindow = 1
+let pymode_lint_ignore = ''
+let pymode_lint_message = 1
+let pymode_lint_on_fly = 0
+let pymode_lint_on_write = 1
+let pymode_lint_select = ''
+let pymode_lint_signs = 1
+let pymode_motion = 1
+let pymode_options = 1
+let pymode_paths = []
+let pymode_quickfix_maxheight = 6
+let pymode_quickfix_minheight = 3
+let pymode_rope = 0
+let pymode_run = 1
+let pymode_run_bind = '<leader>r'
+let pymode_trim_whitespaces = 1
+let pymode_virtualenv = 1
+let pymode_virtualenv_enabled = ''
+let pymode_virtualenv_path = ''
+
+
+
+
+
+
+
 map <Leader>H :set hls!<CR>
+
+
+
+
 
 " Text bubbling
 
@@ -195,9 +256,27 @@ let g:pydiction_menu_height = 20
 " COLORS
 "
 set t_Co=256
+let &t_AB="\e[48;5;%dm"
+let &t_AF="\e[38;5;%dm"
+
+if &term =~ '256color'
+    " disable background color erase
+    set t_ut=
+endif
+
+" enable 24 bit color support if supported
+if (has('mac') && empty($TMUX) && has("termguicolors"))
+    set termguicolors
+endif
+
+let base16colorspace=256
+
+" let g:solarized_termtrans = 1
+colorscheme spacegray 
+let g:spacegray_underline_search = 1
+let g:spacegray_italicize_comments = 1
+
 set background=dark
-let g:solarized_termtrans = 1
-colorscheme solarized
 
 " Insert New Line *************************************************************
 map <S-Enter> O<ESC> " awesome, inserts new line without going into insert mode
@@ -235,18 +314,9 @@ function! QFixToggle(forced)
   endif
 endfunction
 
-function TrimEndLines()
-    let save_cursor = getpos(".")
-    :silent! %s#\($\n\s*\)\+\%$##
-    call setpos('.', save_cursor)
-endfunction
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Trim trailing whitespace
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType python autocmd BufWritePre <buffer> :call TrimEndLines() | call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
-autocmd FileType html autocmd BufWritePre <buffer> :call TrimEndLines() | call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "highlight columns over 79
@@ -260,18 +330,6 @@ else
 endif
 
 
-" GUI Settings {
-if has("gui_running")
-    " Basics {
-        colorscheme shige-wombat256
-        set columns=180
-        set guifont=Inconsolata\ Medium\ 12
-        set guioptions=ce
-    " }
-endif
-" }
-"
-
 set grepprg=ack-grep
 
 set completeopt=menuone,longest,preview
@@ -282,6 +340,7 @@ let NERDTreeMouseMode = 3
 
 autocmd FileType python map <buffer> <leader>8 :call Pep8()<CR>
 autocmd FileType python map <buffer> <leader>f :call Pyflakes()<CR>
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
 
 "autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal noexpandtab shiftwidth=2 tabstop=2 softtabstop=2
@@ -301,15 +360,43 @@ let g:lightline.component = {
 map <Space> <PageDown>
 
 set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:deoplete#enable_at_startup = 1
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+
+autocmd FileType nerdtree setlocal nocursorcolumn
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='hybrid'
+let g:airline_powerline_fonts = 1
+let g:hybrid_custom_term_colors = 1
+let g:hybrid_reduced_contrast = 1 
+
+" Syntastic Configuration
+set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:symtastic_python_checkers = ['flake8']
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
+
+let g:python2_host_prog = '/Users/sabe/.virtualenvs/neovim2/bin/python'
+let g:python3_host_prog = '/Users/sabe/.virtualenvs/neovim3/bin/python'
+
+let g:javascript_plugin_flow = 1
 
 let g:jsx_ext_required = 0
-let g:syntastic_javascript_checkers = ['eslint']
 
