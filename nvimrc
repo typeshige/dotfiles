@@ -20,8 +20,10 @@ Plug 'tpope/vim-commentary'
 
 Plug 'itchyny/lightline.vim'
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'python-mode/python-mode', {'branch': 'develop'}
+Plug 'mattn/emmet-vim'
+
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'python-mode/python-mode', {'branch': 'develop'}
 
 Plug 'sheerun/vim-polyglot'
 
@@ -54,13 +56,18 @@ set number relativenumber
 
 set fileformats=unix,mac,dos
 
-call deoplete#enable()
+" call deoplete#enable()
 
 set noswapfile
 
 command! -nargs=* W write <args>
-let g:pymode_lint = 1
-let g:pymode_lint_unmodified = 0
-let g:pymode_link_on_fly = 0
+" let g:pymode_lint = 1
+" let g:pymode_lint_unmodified = 0
+" let g:pymode_link_on_fly = 0
 
 set nofoldenable
+
+autocmd Filetype html setlocal tabstop=2
+autocmd Filetype html setlocal shiftwidth=2
+
+set cursorcolumn
